@@ -18,24 +18,18 @@ import {
   ImageRequireSource,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import TopBar from './src/components/TopBar';
 import DrugsScreen from './src/screens/DrugsScreen';
-
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <TopBar title="Tela de Remédios"></TopBar>
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+      <TopBar title="Alarmes"></TopBar>
+      <SafeAreaView style={styles.scrollView}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <DrugsScreen></DrugsScreen>
         </ScrollView>
-        <DrugsScreen></DrugsScreen>
       </SafeAreaView>
     </>
   );
@@ -43,7 +37,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#f0ffff',
+    backgroundColor: '#FFFFFF',
   },
   engine: {
     position: 'absolute',

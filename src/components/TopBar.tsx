@@ -14,15 +14,16 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: 52,
     flexDirection: 'row', // row
-    backgroundColor: '#deb887',
+    backgroundColor: '#FFE4F1',
     alignItems: 'center',
     justifyContent: 'center', // center, space-around
     paddingLeft: 10,
     paddingRight: 10,
   },
   title: {
-    fontWeight: '900',
-    fontSize: 20
+    // fontWeight: '900',
+    fontSize: 20,
+    fontFamily: "SilkaMono-Regular"
   },
 });
 
