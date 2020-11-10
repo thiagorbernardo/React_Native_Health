@@ -7,30 +7,34 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Image,
-  ImageRequireSource,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 
 import TopBar from './src/components/TopBar';
 import DrugsScreen from './src/screens/DrugsScreen';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  },
+};
 
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <TopBar title="Alarmes"></TopBar>
-      <SafeAreaView style={styles.scrollView}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <DrugsScreen></DrugsScreen>
-        </ScrollView>
-      </SafeAreaView>
+      <PaperProvider theme={theme}>
+        <StatusBar barStyle="dark-content" />
+        <TopBar title="Alarmes"></TopBar>
+        <SafeAreaView style={styles.scrollView}>
+          <ScrollView contentInsetAdjustmentBehavior="automatic">
+            <DrugsScreen></DrugsScreen>
+          </ScrollView>
+        </SafeAreaView>
+      </PaperProvider>
     </>
   );
 };
