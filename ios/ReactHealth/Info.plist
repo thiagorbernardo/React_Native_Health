@@ -71,6 +71,11 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>OdinRounded-Light.otf</string>
+		<string>OdinRounded-Regular.otf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>SawtonCircular-Thin.otf</string>
 	</array>
 </dict>
 </plist>
