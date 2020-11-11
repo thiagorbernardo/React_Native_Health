@@ -1,29 +1,39 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import { Avatar, IconButton } from 'react-native-paper';
 
 const TopBar = (props: any) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.title}</Text>
+      <IconButton icon="menu"></IconButton>
+      {/* <Text style={styles.title}>{props.title}</Text> */}
+      <Image style={styles.avatar} source={require('../assets/img/avatar.png')}/>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'stretch',
     height: 52,
-    flexDirection: 'row', // row
-    backgroundColor: '#FFE4F1',
+    flexDirection: 'row',
+    backgroundColor: '#FBF0EA',
     alignItems: 'center',
-    justifyContent: 'center', // center, space-around
+    justifyContent: 'space-between',
     paddingLeft: 10,
     paddingRight: 10,
   },
+  avatar: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+    justifyContent: 'flex-end',
+    marginRight: 10,
+    marginTop: 5,
+  },
   title: {
-    // fontWeight: '900',
+    color: '#1A2D4E',
+    fontFamily: "Roboto-Medium",
     fontSize: 20,
-    fontFamily: "SilkaMono-Regular"
   },
 });
 

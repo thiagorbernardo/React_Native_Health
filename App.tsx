@@ -12,6 +12,7 @@ import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 import TopBar from './src/components/TopBar';
 import DrugsScreen from './src/screens/DrugsScreen';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import LinearGradient from 'react-native-linear-gradient';
 
 const theme = {
   ...DefaultTheme,
@@ -27,12 +28,26 @@ const App = () => {
   return (
     <>
       <PaperProvider theme={theme}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <TopBar title="Alarmes"></TopBar>
         <SafeAreaView style={styles.scrollView}>
-          <ScrollView contentInsetAdjustmentBehavior="automatic">
-            <DrugsScreen></DrugsScreen>
-          </ScrollView>
+          <LinearGradient
+            colors={[
+              '#FAEFED',
+              '#FAEFED',
+              '#FAEFED',
+              '#FAEFED',
+              '#FAEFED',
+              '#f2deda',
+              '#f2deda',
+              '#e3c0ba',
+              '#e3c0ba',
+            ]}
+            style={styles.scrollView}>
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
+              <DrugsScreen></DrugsScreen>
+            </ScrollView>
+          </LinearGradient>
         </SafeAreaView>
       </PaperProvider>
     </>
@@ -41,7 +56,8 @@ const App = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
+    flex: 1,
   },
   engine: {
     position: 'absolute',
