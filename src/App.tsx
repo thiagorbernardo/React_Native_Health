@@ -9,8 +9,8 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 
-import TopBar from './src/components/TopBar';
-import DrugsScreen from './src/screens/DrugsScreen';
+import TopBar from './components/TopBar';
+import DrugsScreen from './screens/DrugsScreen';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -29,6 +29,7 @@ const App = () => {
     <>
       <PaperProvider theme={theme}>
         <StatusBar barStyle="light-content" />
+        {/* barStyle="light-content" */}
         <TopBar title="Alarmes"></TopBar>
         <SafeAreaView style={styles.scrollView}>
           <LinearGradient
