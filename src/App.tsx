@@ -28,8 +28,7 @@ const App = () => {
   return (
     <>
       <PaperProvider theme={theme}>
-        <StatusBar barStyle="light-content" />
-        {/* barStyle="light-content" */}
+        <StatusBar backgroundColor="#FAEFED" barStyle="dark-content"/>
         <TopBar title="Alarmes"></TopBar>
         <SafeAreaView style={styles.scrollView}>
           <LinearGradient
