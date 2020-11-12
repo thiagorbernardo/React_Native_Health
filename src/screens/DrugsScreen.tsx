@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Alarm from '../components/Alarm';
 import Medicine from '../models/Medicine.model';
+import * as Animatable from 'react-native-animatable';
 
 export default function DrugScreen() {
   const med: Medicine = {
@@ -20,10 +21,13 @@ export default function DrugScreen() {
   return (
     <>
       <ScrollView>
-        <View>
+        <Animatable.View
+          animation="slideInDown"
+          iterationCount={1}
+          direction="alternate">
           <Text style={styles.helloTitle}>Olá {user.name}!</Text>
           <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
-        </View>
+        </Animatable.View>
         <Alarm {...med}></Alarm>
         <Alarm {...med2}></Alarm>
       </ScrollView>
@@ -34,7 +38,7 @@ export default function DrugScreen() {
 const styles = StyleSheet.create({
   helloTitle: {
     color: '#1A2D4E',
-    fontFamily: "Roboto-Bold",
+    fontFamily: 'Roboto-Bold',
     fontSize: 23,
     alignItems: 'center',
     marginLeft: 20,
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     color: '#1A2D4E',
-    fontFamily: "Roboto-Bold",
+    fontFamily: 'Roboto-Bold',
     fontSize: 25,
     alignItems: 'center',
     marginLeft: 20,
