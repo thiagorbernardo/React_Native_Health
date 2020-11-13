@@ -52,12 +52,12 @@ export default function Alarm(med: Medicine) {
                     {alarmPressed ? (
                       <IconButton
                         size={40}
-                        color="#1A2D4E"
+                        color={AppTheme.colorPrimary}
                         icon="chevron-down"></IconButton>
                     ) : (
                       <IconButton
                         size={40}
-                        color="#1A2D4E"
+                        color={AppTheme.colorPrimary}
                         icon="chevron-right"></IconButton>
                     )}
                   </View>
@@ -66,7 +66,7 @@ export default function Alarm(med: Medicine) {
                   <Button
                     icon="send"
                     mode="text"
-                    color="black"
+                    color={AppTheme.colorPrimary}
                     style={styles.sentButton}
                     disabled={sentAlarmPressed}
                     onPress={() => setSentAlarmPressed(!sentAlarmPressed)}>
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     margin: 20,
     height: 300,
     elevation: 12,
+    shadowRadius: 30,
   },
   rowItens: {
     flexDirection: 'row',
@@ -132,14 +133,14 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   alarmTitle: {
-    color: '#1A2D4E',
+    color: AppTheme.colorPrimary,
     fontFamily: 'Roboto-Medium',
     fontWeight: '600',
     alignItems: 'center',
     fontSize: 22,
   },
   alarmSubTitle: {
-    color: '#1A2D4E',
+    color: AppTheme.colorPrimary,
     fontFamily: 'Roboto-Medium',
     fontSize: 18,
     alignItems: 'center',
@@ -150,10 +151,11 @@ const styles = StyleSheet.create({
   },
   clockText: {
     fontFamily: 'OdinRounded-Thin',
-    color: '#1A2D4E',
+    color: AppTheme.colorPrimary,
     fontSize: 40,
   },
   sentButton: {
+    justifyContent: 'space-between',
     position: 'relative',
     // top: 140,
   },

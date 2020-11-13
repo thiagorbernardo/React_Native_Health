@@ -11,6 +11,7 @@ export const ReactPaperTheme = {
 };
 
 export const AppTheme = {
+  colorPrimary: '#1A2D4E',
   backgroundGradientHome: [
     '#FAEFED',
     '#FAEFED',
