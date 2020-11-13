@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Alarm from '../components/Alarm';
 import Medicine from '../models/Medicine.model';
 import * as Animatable from 'react-native-animatable';
 
 export default function DrugScreen() {
-  const med: Medicine = {
-    name: 'Ibuprofeno',
-    specs: '200mg',
-    hours: '11:00',
-  };
-  const med2: Medicine = {
-    name: 'Dipirona',
-    specs: '100mg',
-    hours: '14:00',
-  };
+  const medsMock: Medicine[] = [
+    {
+      name: 'Ibuprofeno',
+      specs: '200mg',
+      hours: '11:00',
+    },
+    {
+      name: 'Dipirona',
+      specs: '100mg',
+      hours: '14:00',
+    },
+    {
+      name: 'Dipirona',
+      specs: '100mg',
+      hours: '14:00',
+    },
+  ];
+
+  // const [medComponents, setMedComponents] = useState([]);
+
+  // useEffect(() => {
+  //   setMedComponents(medsMock.map((med) => <Alarm {...med}></Alarm>))
+  // }, []);
+
   const user = {
     name: 'Thiago',
   };
@@ -28,8 +42,9 @@ export default function DrugScreen() {
           <Text style={styles.helloTitle}>Olá {user.name}!</Text>
           <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
         </Animatable.View>
-        <Alarm {...med}></Alarm>
-        <Alarm {...med2}></Alarm>
+        <Alarm {...medsMock[0]}></Alarm>
+        <Alarm {...medsMock[1]}></Alarm>
+        <Alarm {...medsMock[2]}></Alarm>
       </ScrollView>
     </>
   );
