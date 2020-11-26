@@ -43,4 +43,8 @@ export const AppTheme = {
     '#ebc9c3',
     '#ebc9c3',
   ],
+  buttonTextSetAlarm: 'white',
+  buttonBackgroundSetAlarm: '#937EE9',
+  buttonBackgroundPressedSetAlarm: '#a694f2',
+  buttonBackgroundDisabledSetAlarm: '#1A2D4E',
 };

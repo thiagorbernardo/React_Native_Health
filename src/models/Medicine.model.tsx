@@ -1,6 +1,7 @@
 export default interface Medicine {
-    name: string;
-    specs: string;
-    description?: string;
-    hours?: string;
-  }
+  key: number;
+  name: string;
+  specs: string;
+  description?: string;
+  hours?: string;
+}

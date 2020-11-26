@@ -12,6 +12,7 @@ import Medicine from '../models/Medicine.model';
 import {AppTheme} from '../theme/App.theme';
 import * as Animatable from 'react-native-animatable';
 import LottieView from 'lottie-react-native';
+import AwesomeButton from 'react-native-really-awesome-button';
 
 export default function Alarm(med: Medicine) {
   const [alarmPressed, setAlarmPressed] = useState(false);
@@ -31,7 +32,7 @@ export default function Alarm(med: Medicine) {
             style={alarmPressed ? styles.alarmViewPressed : styles.alarmView}>
             <TouchableWithoutFeedback
               onPress={() => setAlarmPressed(!alarmPressed)}>
-              <View style={{alignItems: 'flex-end'}}>
+              <View>
                 <View style={styles.rowItens}>
                   <View style={styles.imgColumn}>
                     <Image
@@ -63,15 +64,31 @@ export default function Alarm(med: Medicine) {
                   </View>
                 </View>
                 {alarmPressed ? (
-                  <Button
-                    icon="send"
-                    mode="text"
-                    color={AppTheme.colorPrimary}
-                    style={styles.sentButton}
-                    disabled={sentAlarmPressed}
-                    onPress={() => setSentAlarmPressed(!sentAlarmPressed)}>
-                    Tomei o Remédio
-                  </Button>
+                  <>
+                    <View style={{marginLeft: 10}}>
+                      <Text style={styles.alarmSubTitle}>
+                        {med.description}
+                      </Text>
+                    </View>
+                    <View
+                      style={{alignItems: 'flex-end', flexDirection: 'column'}}>
+                      <AwesomeButton
+                        backgroundColor={
+                          sentAlarmPressed
+                            ? AppTheme.buttonBackgroundDisabledSetAlarm
+                            : AppTheme.buttonBackgroundSetAlarm
+                        }
+                        backgroundActive={
+                          AppTheme.buttonBackgroundPressedSetAlarm
+                        }
+                        textColor={AppTheme.buttonTextSetAlarm}
+                        borderRadius={30}
+                        disabled={sentAlarmPressed}
+                        onPress={() => setSentAlarmPressed(!sentAlarmPressed)}>
+                        Tomei o Remédio
+                      </AwesomeButton>
+                    </View>
+                  </>
                 ) : (
                   <></>
                 )}
@@ -107,7 +124,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     padding: 10,
     margin: 20,
-    height: 300,
+    height: 230,
     elevation: 12,
     shadowRadius: 30,
   },
@@ -146,6 +163,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 4,
   },
+  alarmDescriptionText: {
+    marginLeft: 75,
+  },
   clock: {
     marginLeft: 6,
   },
@@ -153,10 +173,5 @@ const styles = StyleSheet.create({
     fontFamily: 'OdinRounded-Thin',
     color: AppTheme.colorPrimary,
     fontSize: 40,
-  },
-  sentButton: {
-    justifyContent: 'space-between',
-    position: 'relative',
-    // top: 140,
   },
 });

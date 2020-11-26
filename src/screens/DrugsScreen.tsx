@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Alarm from '../components/Alarm';
 import Medicine from '../models/Medicine.model';
@@ -7,27 +7,55 @@ import * as Animatable from 'react-native-animatable';
 export default function DrugScreen() {
   const medsMock: Medicine[] = [
     {
-      name: 'Ibuprofeno',
-      specs: '200mg',
-      hours: '11:00',
+      key: 1,
+      name: 'Omeprazol',
+      specs: '1x',
+      hours: '08:00',
+      description: 'Protetor Gástrico (Previne azia)',
     },
     {
-      name: 'Dipirona',
-      specs: '100mg',
-      hours: '14:00',
+      key: 2,
+      name: 'Prednisona',
+      specs: '1x',
+      hours: '09:00',
+      description: 'Prevenção de rejeição',
     },
     {
-      name: 'Dipirona',
-      specs: '100mg',
-      hours: '14:00',
+      key: 3,
+      name: 'Bactrim',
+      specs: '1x',
+      hours: '08:00',
+      description: 'Antibiótico, usado na prevenção de infecção',
+    },
+    {
+      key: 4,
+      name: 'Tacrolimos',
+      specs: '1x',
+      hours: '08:00',
+      description: 'Imunossupressor, usado para prevenção de rejeição',
+    },
+    {
+      key: 5,
+      name: 'Omeprazol',
+      specs: '1x',
+      hours: '20:00',
+      description: 'Protetor Gástrico (Previne azia)',
+    },
+    {
+      key: 6,
+      name: 'Bactrim',
+      specs: '1x',
+      hours: '20:00',
+      description: 'Antibiótico, usado na prevenção de infecção',
+    },
+    {
+      key: 7,
+      name: 'Tacrolimos',
+      specs: '1x',
+      hours: '20:00',
+      description: 'Imunossupressor, usado para prevenção de rejeição',
     },
   ];
-
-  // const [medComponents, setMedComponents] = useState([]);
-
-  // useEffect(() => {
-  //   setMedComponents(medsMock.map((med) => <Alarm {...med}></Alarm>))
-  // }, []);
 
   const user = {
     name: 'Thiago',
@@ -42,9 +70,9 @@ export default function DrugScreen() {
           <Text style={styles.helloTitle}>Olá {user.name}!</Text>
           <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
         </Animatable.View>
-        <Alarm {...medsMock[0]}></Alarm>
-        <Alarm {...medsMock[1]}></Alarm>
-        <Alarm {...medsMock[2]}></Alarm>
+        {medsMock.map((med, key) => {
+          return <Alarm {...med}></Alarm>;
+        })}
       </ScrollView>
     </>
   );
