@@ -23,7 +23,7 @@ export default function Alarm(med: Medicine) {
     if (shouldBePlaying == true) {
       setTimeout(() => {
         setShouldBePlaying(false);
-      }, 2100);
+      }, 500);
     }
   }, [shouldBePlaying]);
   return (
