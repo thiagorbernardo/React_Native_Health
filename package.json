@@ -10,7 +10,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@gorhom/paper-onboarding": "^1.0.0",
     "@types/react-native-push-notification": "^5.0.5",
     "@types/react-native-snap-carousel": "^3.8.2",
     "lottie-react-native": "^3.5.0",
