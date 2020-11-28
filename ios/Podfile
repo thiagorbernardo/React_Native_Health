@@ -12,6 +12,8 @@ target 'ReactHealth' do
 
   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
   target 'ReactHealthTests' do
     inherit! :complete
     # Pods for testing
