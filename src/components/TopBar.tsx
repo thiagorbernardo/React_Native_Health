@@ -1,13 +1,20 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import { Avatar, IconButton } from 'react-native-paper';
+import {Avatar, IconButton} from 'react-native-paper';
+import LottieView from 'lottie-react-native';
 
 const TopBar = (props: any) => {
   return (
     <View style={styles.container}>
       <IconButton icon="menu"></IconButton>
       {/* <Text style={styles.title}>{props.title}</Text> */}
-      <Image style={styles.avatar} source={require('../assets/img/avatar.png')}/>
+      {/* <Image style={styles.avatar} source={require('../assets/img/avatar.png')}/> */}
+      <LottieView
+        source={require('../assets/lottie/avocado-healthy.json')}
+        autoPlay
+        resizeMode="cover"
+        style={styles.avatar}
+      />
     </View>
   );
 };
@@ -23,16 +30,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   avatar: {
-    width: 50,
-    height: 50,
-    resizeMode: 'contain',
+    width: 65,
+    height: 65,
     justifyContent: 'flex-end',
-    marginRight: 10,
-    marginTop: 5,
+    marginRight: 1,
+    marginTop: 1,
   },
   title: {
     color: '#1A2D4E',
-    fontFamily: "Roboto-Medium",
+    fontFamily: 'Roboto-Medium',
     fontSize: 20,
   },
 });
