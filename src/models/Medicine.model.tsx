@@ -1,5 +1,5 @@
 export default interface Medicine {
-  key: number;
+  id: number;
   name: string;
   specs: string;
   description?: string;

@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Button, IconButton} from 'react-native-paper';
+import {Badge, IconButton} from 'react-native-paper';
 import Medicine from '../models/Medicine.model';
 import {AppTheme} from '../theme/App.theme';
 import * as Animatable from 'react-native-animatable';
@@ -17,7 +17,15 @@ import AwesomeButton from 'react-native-really-awesome-button';
 export default function Alarm(med: Medicine) {
   const [alarmPressed, setAlarmPressed] = useState(false);
   const [sentAlarmPressed, setSentAlarmPressed] = useState(false);
+  const [shouldBePlaying, setShouldBePlaying] = useState(false);
 
+  useEffect(() => {
+    if (shouldBePlaying == true) {
+      setTimeout(() => {
+        setShouldBePlaying(false);
+      }, 2100);
+    }
+  }, [shouldBePlaying]);
   return (
     <>
       <Animatable.View
@@ -44,8 +52,9 @@ export default function Alarm(med: Medicine) {
                     <View style={styles.titles}>
                       <Text style={styles.alarmTitle}>{med.name}</Text>
                       <Text style={styles.alarmSubTitle}>{med.specs}</Text>
+                      {/* <Badge visible></Badge> //TODO: To see witch pills remains */}
                     </View>
-                    <View style={styles.clock}>
+                    <View style={{marginLeft: 6}}>
                       <Text style={styles.clockText}>{med.hours}</Text>
                     </View>
                   </View>
@@ -70,6 +79,16 @@ export default function Alarm(med: Medicine) {
                         {med.description}
                       </Text>
                     </View>
+                    {sentAlarmPressed && shouldBePlaying ? (
+                      <LottieView
+                        source={require('../assets/lottie/star.json')}
+                        autoPlay
+                        resizeMode="cover"
+                        style={styles.lottieView}
+                      />
+                    ) : (
+                      <></>
+                    )}
                     <View
                       style={{alignItems: 'flex-end', flexDirection: 'column'}}>
                       <AwesomeButton
@@ -84,7 +103,11 @@ export default function Alarm(med: Medicine) {
                         textColor={AppTheme.buttonTextSetAlarm}
                         borderRadius={30}
                         disabled={sentAlarmPressed}
-                        onPress={() => setSentAlarmPressed(!sentAlarmPressed)}>
+                        onPress={() => {
+                          setSentAlarmPressed(!sentAlarmPressed);
+                          setShouldBePlaying(true);
+                        }}>
+                        {/* LocalNotification() //TODO:Use this to send notify...*/}
                         Tomei o Remédio
                       </AwesomeButton>
                     </View>
@@ -163,15 +186,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 4,
   },
-  alarmDescriptionText: {
-    marginLeft: 75,
-  },
-  clock: {
-    marginLeft: 6,
-  },
   clockText: {
     fontFamily: 'OdinRounded-Thin',
     color: AppTheme.colorPrimary,
     fontSize: 40,
+  },
+  lottieView: {
+    width: 300,
+    height: 200,
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 1,
   },
 });
