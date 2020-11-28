@@ -11,14 +11,12 @@ import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 
 import TopBar from './components/TopBar';
 import DrugsScreen from './screens/DrugsScreen';
-import {Provider as PaperProvider} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
-import { AppTheme, ReactPaperTheme } from './theme/App.theme';
+import { AppTheme } from './theme/App.theme';
 
 const App = () => {
   return (
     <>
-      <PaperProvider theme={ReactPaperTheme}>
         <StatusBar backgroundColor="#FAEFED" barStyle="dark-content"/>
         <TopBar title="Alarmes"></TopBar>
         <SafeAreaView style={styles.scrollView}>
@@ -30,7 +28,6 @@ const App = () => {
             </ScrollView>
           </LinearGradient>
         </SafeAreaView>
-      </PaperProvider>
     </>
   );
 };
