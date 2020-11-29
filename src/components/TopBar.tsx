@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {Avatar, IconButton} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
+import { AppTheme } from '../theme/App.theme';
 
 const TopBar = (props: any) => {
   return (
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     height: 52,
     flexDirection: 'row',
-    backgroundColor: '#FBF0EA',
+    backgroundColor: AppTheme.topBarColor,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingLeft: 10,

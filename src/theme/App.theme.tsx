@@ -32,6 +32,7 @@ export const AppTheme = {
     '#ebc9c3',
     '#ebc9c3',
   ],
+  topBarColor: '#FBF0EA',
   buttonTextSetAlarm: 'white',
   buttonBackgroundSetAlarm: '#937EE9',
   buttonBackgroundPressedSetAlarm: '#a694f2',
