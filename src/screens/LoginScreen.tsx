@@ -10,12 +10,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import {AppTheme} from '../theme/App.theme';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onPressSend = () => {
     console.log(email, password);
+    navigation.replace('Home');
   };
   return (
     <LinearGradient
