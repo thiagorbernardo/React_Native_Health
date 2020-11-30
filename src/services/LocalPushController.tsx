@@ -31,6 +31,7 @@ export const LocalNotification = () => {
     /* Android Only Properties */
     channelId: 'channel-alarm-notify', // (required) channelId, if the channel doesn't exist, it will be created with options passed above (importance, vibration, sound). Once the channel is created, the channel will not be update. Make sure your channelId is different if you change these options. If you have created a custom channel, it will apply options of the channel.
     title: 'Está na hora do seu remédio!', // (optional)
-    message: 'Remédio XXX', // (required)
+    message: 'Tomar tacrolimos', // (required)
+    color: 'red'
   });
 };

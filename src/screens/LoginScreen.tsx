@@ -24,9 +24,9 @@ export default function LoginScreen({navigation}: any) {
       style={styles.container}>
       <Text style={styles.logo}>Rim Saudável</Text>
       <LottieView
-        source={require('../assets/lottie/woman-meditation.json')}
+        source={require('../assets/lottie/heart-pumping.json')}
         autoPlay
-        resizeMode="contain"
+        resizeMode="center"
         style={styles.lottie}
       />
       <View style={styles.inputView}>

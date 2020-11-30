@@ -1,10 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text} from 'react-native';
+import LottieView from 'lottie-react-native';
 import Alarm from '../components/Alarm';
-import Medicine from '../models/Medicine.model';
+import {Medicine, User} from '../models/User.model';
 import * as Animatable from 'react-native-animatable';
 
 export default function DrugScreen() {
+  const urlBackend = 'https://backend-react-health.thiagorbernardo.vercel.app';
+
+  const [isLoading, setLoading] = useState(true);
+  const [medicine, setMedicine] = useState<Medicine[]>([]);
+  const [userData, setUserData] = useState<User>();
+
+  useEffect(() => {
+    fetch(`${urlBackend}/api/user?email=thiago@t.com`)
+      .then((response) => response.json())
+      .then((json) => setMedicine(json.content.medicines))
+      .catch((error) => console.error(error))
+      .finally(() => {
+        // setMedicine(userData.medicines);
+        setLoading(false);
+      });
+  }, []);
+
   const medsMock: Medicine[] = [
     {
       key: 1,
@@ -62,18 +80,27 @@ export default function DrugScreen() {
   };
   return (
     <>
-      <ScrollView>
-        <Animatable.View
-          animation="slideInDown"
-          iterationCount={1}
-          direction="alternate">
-          <Text style={styles.helloTitle}>Olá, {user.name}!</Text>
-          <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
-        </Animatable.View>
-        {medsMock.map((med, key) => {
-          return <Alarm {...med}></Alarm>;
-        })}
-      </ScrollView>
+      {isLoading ? (
+        <LottieView
+          source={require('../assets/lottie/loading-plane.json')}
+          autoPlay
+          resizeMode="contain"
+          style={styles.lottieLoading}
+        />
+      ) : (
+        <ScrollView>
+          <Animatable.View
+            animation="slideInDown"
+            iterationCount={1}
+            direction="alternate">
+            <Text style={styles.helloTitle}>Olá, {user.name}!</Text>
+            <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
+          </Animatable.View>
+          {medicine.map((med, key) => {
+            return <Alarm {...med}></Alarm>;
+          })}
+        </ScrollView>
+      )}
     </>
   );
 }
@@ -96,5 +123,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 10,
     marginBottom: 10,
+  },
+  lottieLoading: {
+    flex: 1,
   },
 });

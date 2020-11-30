@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {IconButton} from 'react-native-paper';
-import Medicine from '../models/Medicine.model';
+import {Medicine} from '../models/User.model';
 import {AppTheme} from '../theme/App.theme';
 import * as Animatable from 'react-native-animatable';
 import LottieView from 'lottie-react-native';
 import AwesomeButton from 'react-native-really-awesome-button';
+import { LocalNotification } from '../services/LocalPushController';
 
 export default function Alarm(med: Medicine) {
   const [alarmPressed, setAlarmPressed] = useState(false);
@@ -99,8 +100,8 @@ export default function Alarm(med: Medicine) {
                       onPress={() => {
                         setSentAlarmPressed(!sentAlarmPressed);
                         setShouldBePlaying(true);
+                        // LocalNotification(); //TODO:Use this to send notify...
                       }}>
-                      {/* LocalNotification() //TODO:Use this to send notify...*/}
                       Tomei o Remédio
                     </AwesomeButton>
                   </View>
