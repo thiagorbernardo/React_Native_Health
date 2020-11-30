@@ -32,92 +32,84 @@ export default function Alarm(med: Medicine) {
         animation="slideInDown"
         iterationCount={1}
         direction="alternate">
-        <View>
-          <LinearGradient
-            start={{x: 0.3, y: 0.1}}
-            end={{x: 1, y: 1}}
-            colors={AppTheme.alarmCardColors}
-            style={alarmPressed ? styles.alarmViewPressed : styles.alarmView}>
-            <TouchableWithoutFeedback
-              onPress={() => setAlarmPressed(!alarmPressed)}>
-              <View>
-                <View style={styles.rowItens}>
-                  <View style={styles.imgColumn}>
-                    <Image
-                      source={require('../assets/img/pill.png')}
-                      style={styles.tinyLogo}
-                    />
+        <View style={alarmPressed ? styles.alarmViewPressed : styles.alarmView}>
+          <TouchableWithoutFeedback
+            onPress={() => setAlarmPressed(!alarmPressed)}>
+            <View>
+              <View style={styles.rowItens}>
+                <View style={styles.imgColumn}>
+                  <Image
+                    source={require('../assets/img/pill.png')}
+                    style={styles.tinyLogo}
+                  />
+                </View>
+                <View style={styles.columnItens}>
+                  <View style={styles.titles}>
+                    <Text style={styles.alarmTitle}>{med.name}</Text>
+                    <Text style={styles.alarmSubTitle}>{med.specs}</Text>
+                    {/* <Badge visible></Badge> //TODO: To see witch pills remains */}
                   </View>
-                  <View style={styles.columnItens}>
-                    <View style={styles.titles}>
-                      <Text style={styles.alarmTitle}>{med.name}</Text>
-                      <Text style={styles.alarmSubTitle}>{med.specs}</Text>
-                      {/* <Badge visible></Badge> //TODO: To see witch pills remains */}
-                    </View>
-                    <View style={{marginLeft: 6}}>
-                      <Text style={styles.clockText}>{med.hours}</Text>
-                    </View>
-                  </View>
-                  <View style={styles.icon}>
-                    {alarmPressed ? (
-                      <IconButton
-                        size={40}
-                        color={AppTheme.colorPrimary}
-                        icon="chevron-down"></IconButton>
-                    ) : (
-                      <IconButton
-                        size={40}
-                        color={AppTheme.colorPrimary}
-                        icon="chevron-right"></IconButton>
-                    )}
+                  <View style={{marginLeft: 6}}>
+                    <Text style={styles.clockText}>{med.hours}</Text>
                   </View>
                 </View>
-                {alarmPressed ? (
-                  <>
-                    <View style={{marginLeft: 10}}>
-                      <Text style={styles.alarmSubTitle}>
-                        {med.description}
-                      </Text>
-                    </View>
-                    {sentAlarmPressed && shouldBePlaying ? (
-                      <LottieView
-                        source={require('../assets/lottie/star.json')}
-                        autoPlay
-                        resizeMode="cover"
-                        style={styles.lottieView}
-                      />
-                    ) : (
-                      <></>
-                    )}
-                    <View
-                      style={{alignItems: 'flex-end', flexDirection: 'column'}}>
-                      <AwesomeButton
-                        backgroundColor={
-                          sentAlarmPressed
-                            ? AppTheme.buttonBackgroundDisabledSetAlarm
-                            : AppTheme.buttonBackgroundSetAlarm
-                        }
-                        backgroundActive={
-                          AppTheme.buttonBackgroundPressedSetAlarm
-                        }
-                        textColor={AppTheme.buttonTextSetAlarm}
-                        borderRadius={30}
-                        disabled={sentAlarmPressed}
-                        onPress={() => {
-                          setSentAlarmPressed(!sentAlarmPressed);
-                          setShouldBePlaying(true);
-                        }}>
-                        {/* LocalNotification() //TODO:Use this to send notify...*/}
-                        Tomei o Remédio
-                      </AwesomeButton>
-                    </View>
-                  </>
-                ) : (
-                  <></>
-                )}
+                <View style={styles.icon}>
+                  {alarmPressed ? (
+                    <IconButton
+                      size={40}
+                      color={AppTheme.colorPrimary}
+                      icon="chevron-down"></IconButton>
+                  ) : (
+                    <IconButton
+                      size={40}
+                      color={AppTheme.colorPrimary}
+                      icon="chevron-right"></IconButton>
+                  )}
+                </View>
               </View>
-            </TouchableWithoutFeedback>
-          </LinearGradient>
+              {alarmPressed ? (
+                <>
+                  <View style={{marginLeft: 10}}>
+                    <Text style={styles.alarmSubTitle}>{med.description}</Text>
+                  </View>
+                  {sentAlarmPressed && shouldBePlaying ? (
+                    <LottieView
+                      source={require('../assets/lottie/star.json')}
+                      autoPlay
+                      resizeMode="cover"
+                      style={styles.lottieView}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  <View
+                    style={{alignItems: 'flex-end', flexDirection: 'column'}}>
+                    <AwesomeButton
+                      backgroundColor={
+                        sentAlarmPressed
+                          ? AppTheme.buttonBackgroundDisabledSetAlarm
+                          : AppTheme.buttonBackgroundSetAlarm
+                      }
+                      backgroundActive={
+                        AppTheme.buttonBackgroundPressedSetAlarm
+                      }
+                      textColor={AppTheme.buttonTextSetAlarm}
+                      borderRadius={30}
+                      disabled={sentAlarmPressed}
+                      onPress={() => {
+                        setSentAlarmPressed(!sentAlarmPressed);
+                        setShouldBePlaying(true);
+                      }}>
+                      {/* LocalNotification() //TODO:Use this to send notify...*/}
+                      Tomei o Remédio
+                    </AwesomeButton>
+                  </View>
+                </>
+              ) : (
+                <></>
+              )}
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </Animatable.View>
     </>
@@ -137,6 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   alarmView: {
+    backgroundColor: AppTheme.alarmCardColors,
     borderRadius: 30,
     padding: 10,
     margin: 18,
@@ -144,6 +137,7 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   alarmViewPressed: {
+    backgroundColor: AppTheme.alarmCardColors,
     borderRadius: 30,
     padding: 10,
     margin: 20,
