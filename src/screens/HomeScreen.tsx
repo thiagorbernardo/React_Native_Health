@@ -2,7 +2,6 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import * as Progress from 'react-native-progress';
 import TopBar from '../components/TopBar';
 
 import {AppTheme} from '../theme/App.theme';
@@ -11,13 +10,13 @@ import DrugsScreen from './DrugsScreen';
 export default function HomeScreen() {
   return (
     <>
-      <StatusBar backgroundColor="#FAEFED" barStyle="dark-content" />
+      <StatusBar backgroundColor="#E5ECFF" barStyle="dark-content" />
       <SafeAreaView style={styles.scrollView}>
         <>
           <TopBar></TopBar>
           <LinearGradient
             colors={AppTheme.backgroundGradientHome}
-            style={styles.scrollView}>
+            style={{flex: 1}}>
             <ScrollView contentInsetAdjustmentBehavior="automatic"></ScrollView>
             <DrugsScreen></DrugsScreen>
           </LinearGradient>

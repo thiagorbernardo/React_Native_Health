@@ -67,7 +67,7 @@ export default function DrugScreen() {
           animation="slideInDown"
           iterationCount={1}
           direction="alternate">
-          <Text style={styles.helloTitle}>Olá {user.name}!</Text>
+          <Text style={styles.helloTitle}>Olá, {user.name}!</Text>
           <Text style={styles.textTitle}>Aqui estão seus remédios</Text>
         </Animatable.View>
         {medsMock.map((med, key) => {
