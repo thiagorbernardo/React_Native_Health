@@ -4,4 +4,4 @@ export default interface Medicine {
   specs: string;
   description?: string;
   hours?: string;
-}
+};

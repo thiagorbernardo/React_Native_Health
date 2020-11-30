@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text} from 'react-native';
 import Alarm from '../components/Alarm';
 import Medicine from '../models/Medicine.model';
 import * as Animatable from 'react-native-animatable';

@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "npx react-native start --port 8084 --reset-cache",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix-dry-run"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",

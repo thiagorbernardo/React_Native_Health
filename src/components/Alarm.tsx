@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Badge, IconButton} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 import Medicine from '../models/Medicine.model';
 import {AppTheme} from '../theme/App.theme';
 import * as Animatable from 'react-native-animatable';
@@ -20,7 +20,7 @@ export default function Alarm(med: Medicine) {
   const [shouldBePlaying, setShouldBePlaying] = useState(false);
 
   useEffect(() => {
-    if (shouldBePlaying == true) {
+    if (shouldBePlaying === true) {
       setTimeout(() => {
         setShouldBePlaying(false);
       }, 500);

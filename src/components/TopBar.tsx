@@ -1,10 +1,10 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {Avatar, IconButton} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {IconButton} from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import { AppTheme } from '../theme/App.theme';
 
-const TopBar = (props: any) => {
+const TopBar = () => {
   return (
     <View style={styles.container}>
       <IconButton icon="menu"></IconButton>
