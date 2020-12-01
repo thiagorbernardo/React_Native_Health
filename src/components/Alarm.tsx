@@ -100,6 +100,8 @@ export default function Alarm(med: Medicine) {
                       onPress={() => {
                         setSentAlarmPressed(!sentAlarmPressed);
                         setShouldBePlaying(true);
+                        console.log(`Click in med: ${med.name}`);
+                        med.tookMed = true;
                         // LocalNotification(); //TODO:Use this to send notify...
                       }}>
                       Tomei o Remédio
