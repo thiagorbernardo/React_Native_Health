@@ -17,6 +17,7 @@
       android:icon="@drawable/icon"
       android:roundIcon="@drawable/icon"
       android:allowBackup="false"
+      android:usesCleartextTraffic="true"
       android:theme="@style/AppTheme">
 <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
                 android:value="YOUR NOTIFICATION CHANNEL NAME"/>

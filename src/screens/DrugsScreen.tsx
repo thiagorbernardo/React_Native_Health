@@ -6,9 +6,9 @@ import Alarm from '../components/Alarm';
 import {DailyMedicine, Medicine} from '../models/User.model';
 import * as Animatable from 'react-native-animatable';
 import {ResponseModel} from '../models/Response.model';
+import { URL_BACKEND } from '../models/Develop.env'
 
 export default function DrugScreen() {
-  const urlBackend = 'https://backend-react-health.thiagorbernardo.vercel.app';
 
   const [isLoading, setLoading] = useState(true);
   const [user, setDailyMedicine] = useState<DailyMedicine>(null!);
@@ -16,9 +16,9 @@ export default function DrugScreen() {
 
   useEffect(() => {
     let today = moment().format('DD-MM-YYYY');
-    console.log('Getting user medicines');
+    console.log('Getting user medicines', today);
     fetch(
-      `${urlBackend}/api/user/getMedication?email=thiago@t.com&date=${today}`,
+      `${URL_BACKEND}/api/user/getMedication?email=thiago@t.com&date=${today}`,
     )
       .then((response) => response.json())
       .then((json: ResponseModel<DailyMedicine>) => {

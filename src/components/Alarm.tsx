@@ -13,11 +13,16 @@ import {AppTheme} from '../theme/App.theme';
 import * as Animatable from 'react-native-animatable';
 import LottieView from 'lottie-react-native';
 import AwesomeButton from 'react-native-really-awesome-button';
-import { LocalNotification } from '../services/LocalPushController';
+import moment from 'moment';
+import {LocalNotification} from '../services/LocalPushController';
+import {URL_BACKEND} from '../models/Develop.env';
+import {ResponseModel} from '../models/Response.model';
 
 export default function Alarm(med: Medicine) {
   const [alarmPressed, setAlarmPressed] = useState(false);
-  const [sentAlarmPressed, setSentAlarmPressed] = useState(false);
+  const [sentAlarmPressed, setSentAlarmPressed] = useState(
+    med.tookMed || false,
+  );
   const [shouldBePlaying, setShouldBePlaying] = useState(false);
 
   useEffect(() => {
@@ -27,6 +32,27 @@ export default function Alarm(med: Medicine) {
       }, 500);
     }
   }, [shouldBePlaying]);
+
+  const setDailyPillTaken = async (id: string) => {
+    const today = moment().format('DD-MM-YYYY');
+    const email = 'thiago@t.com'; //This info will be on async storage or redux
+    console.log(today);
+    await fetch(`${URL_BACKEND}/api/user/setDailyPillTaken`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: today,
+        email: email,
+        id: id.toString(),
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((error) => console.error(error));
+  };
   return (
     <>
       <Animatable.View
@@ -97,11 +123,13 @@ export default function Alarm(med: Medicine) {
                       textColor={AppTheme.buttonTextSetAlarm}
                       borderRadius={30}
                       disabled={sentAlarmPressed}
-                      onPress={() => {
+                      onPress={async () => {
                         setSentAlarmPressed(!sentAlarmPressed);
                         setShouldBePlaying(true);
                         console.log(`Click in med: ${med.name}`);
-                        med.tookMed = true;
+                        console.log(`Click in med id: ${med.id}`);
+                        // med.tookMed = true;
+                        await setDailyPillTaken(med.id);
                         // LocalNotification(); //TODO:Use this to send notify...
                       }}>
                       Tomei o Remédio
