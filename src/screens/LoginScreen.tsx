@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,15 +9,39 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import {AppTheme} from '../theme/App.theme';
+import auth from '@react-native-firebase/auth';
 
 export default function LoginScreen({navigation}: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const onPressSend = () => {
+  const onPressSend = async () => {
     console.log(email, password);
-    navigation.replace('Home');
+
+    try {
+      const user = await auth().signInWithEmailAndPassword(email, password);
+      console.log('final do await', user);
+      setIsAuthenticated(true);
+    } catch (error) {
+      if (error.code === 'auth/invalid-email') {
+        console.log('That email address is invalid!');
+        return;
+      } else if (error.code === 'auth/wrong-password') {
+        console.log('That password is invalid!');
+        return;
+      }
+      console.error(error);
+    }
+    console.log('chegou no final');
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log('Entrei no effect com valor:', isAuthenticated);
+      // navigation.replace('Home');
+    }
+  }, [isAuthenticated]);
   return (
     <LinearGradient
       colors={AppTheme.backgroundGradientHome}
@@ -105,6 +129,6 @@ const styles = StyleSheet.create({
     width: 270,
     height: 270,
     justifyContent: 'flex-end',
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
