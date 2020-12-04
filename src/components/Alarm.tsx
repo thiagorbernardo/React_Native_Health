@@ -129,8 +129,8 @@ export default function Alarm(med: Medicine) {
                         console.log(`Click in med: ${med.name}`);
                         console.log(`Click in med id: ${med.id}`);
                         // med.tookMed = true;
+                        // await LocalNotification(); //TODO:Use this to send notify...
                         await setDailyPillTaken(med.id);
-                        // LocalNotification(); //TODO:Use this to send notify...
                       }}>
                       Tomei o Remédio
                     </AwesomeButton>

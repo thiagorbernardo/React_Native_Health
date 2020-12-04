@@ -16,6 +16,7 @@ export interface Medicine {
   hours: string;
   description: string;
   tookMed?: boolean;
+  timestamp?: number;
 };
 
 export interface DailyMedicine {
