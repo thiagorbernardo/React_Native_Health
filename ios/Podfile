@@ -16,6 +16,8 @@ target 'ReactHealth' do
 
   pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
 
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
+
   target 'ReactHealthTests' do
     inherit! :complete
     # Pods for testing
