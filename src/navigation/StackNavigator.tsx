@@ -5,11 +5,6 @@ import HomeScreen from '../screens/HomeScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import LoadingScreen from '../components/LoadingScreen';
 import LoginScreen from '../screens/LoginScreen';
-// import {
-//   setStorageData,
-//   getStorageData,
-//   deleteStorageData,
-// } from '../services/AsyncStorageController';
 
 const Stack = createStackNavigator();
 
